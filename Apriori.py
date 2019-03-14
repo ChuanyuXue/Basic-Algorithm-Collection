@@ -2,7 +2,7 @@ import numpy as np
 from itertools import combinations
 
 class Apriori:
-    def __init__(self, min_support: float = 0, min_confidence: float = 0):
+    def __init__(self, min_support: float = 0.001, min_confidence: float = 0):
         # parameters
         self.min_supprot = min_support
         self.min_confidence = min_confidence
@@ -62,9 +62,9 @@ class Apriori:
         for i in indexs:
             q[i] = 1
 
-        a = np.sum(self.orig_data * q)
+        a = np.sum(self.orig_data * q, axis=1)
 
-        return len(np.where(a == 3)[0])
+        return len(np.where(a == len(indexs))[0])
 
 
 
