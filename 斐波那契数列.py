@@ -16,9 +16,9 @@ class Solution:
             b += a
         return b if n%2 else a
          
-class Solution:
-    def Fibonacci(self, n):
-        a, b = 0, 1
-        for i in range(n):
-            a, b = b, a+b
-        return a
+# class Solution:
+#     def Fibonacci(self, n):
+#         a, b = 0, 1
+#         for i in range(n):
+#             a, b = b, a+b
+#         return a
