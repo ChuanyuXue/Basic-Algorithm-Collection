@@ -7,18 +7,16 @@
 # @lc code=start
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        if n >= 0:
-            result = 1
-            for i in range(0, n):
-                result *= x
-            return round(result, 5)
-        else:
-            result = 1
-            for i in range(0, -1 * n):
-                result *= x
-            return round(1 / result, 5)
+        def inline(n):
+            if n == 0:
+                return 1.0
+            y = inline(n // 2)
+            return y * y if n % 2 == 0 else y * y * x
+        return inline(n) if n >= 0 else 1.0 / inline(-1 * n)
         
 # @lc code=end
 
 a = Solution()
-print(a.myPow(0.00001, 2147483647))
+#print(a.log(10))
+
+print(a.myPow(2, -10))
