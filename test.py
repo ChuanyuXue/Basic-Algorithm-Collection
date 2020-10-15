@@ -1,34 +1,12 @@
-from Apriori import Apriori
-import tools
-import numpy as np
-
-model = Apriori()
-
-data = np.array([
-    [1, 0, 0, 1],
-    [1, 0, 0, 0],
-    [0, 0, 1, 1],
-    [0, 0, 1, 1],
-    [1, 1, 1, 1],
-    [0, 0, 0, 0]])
-
-
-model.train(data=data)
-
-print(model.k_frequent_sets_list)
-
-data2 = np.array([
-    [1.1, 0.3, 0.7, 1.1],
-    [1.0, 0.2, 0.3, 0.1],
-    [0.9, 0.8, 1.7, 1.3],
-    [0.0, 0.0, 1.0, 1.0],
-    [1.2, 1.2, 1.1, 1.5],
-    [0.4, 0.4, 0.6, 0.6]])
-
-y2 = [2, 1, 0.8, 0.2, 1.7, 1.3]
-
-print(tools.least_squares(data2, y2))
-
-print(tools.gradient_descent(data2, y2, 0.01))
-
-print(tools.stochastic_gradient_descent(data2, y2, 0.01))
+def seak(nums, target, k):
+    if k == 0 or not nums:
+        if target == 0:
+            return 1
+        else:
+            return 0
+    result = []
+    for i,v in enumerate(nums):
+        result.append(seak([l for j,l in enumerate(nums) if j != i], target - v, k - 1))
+    return 1 if sum(result) != 0 else 0
+print(seak([2,8,-5,6,-10,3,7],0,3))
+print(seak([2,3,1,22,5],0, 3))
